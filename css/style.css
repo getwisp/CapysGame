@@ -177,6 +177,26 @@ body {
     font-size: var(--font-size-lg);
 }
 
+#weather-forecast {
+    font-size: var(--font-size-sm);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    animation: fadeIn 0.3s ease;
+}
+
+#weather-forecast.hidden {
+    display: none;
+}
+
+#weather-forecast .forecast-label {
+    opacity: 0.8;
+    font-size: var(--font-size-xs);
+}
+
 /* Main Game Area */
 #game-main {
     display: grid;

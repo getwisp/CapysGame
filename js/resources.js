@@ -232,9 +232,13 @@ const Resources = {
             }
         }
         
-        // Apply science generation bonus from research (Oral Tradition, Writing)
-        if (this.production.science > 0 && Research.bonuses.scienceBonus) {
-            this.production.science *= (1 + Research.bonuses.scienceBonus);
+        // Apply science generation bonus from research (Oral Tradition, Writing) and prestige (Elder Wisdom)
+        if (this.production.science > 0) {
+            let scienceBonus = Research.bonuses.scienceBonus || 0;
+            scienceBonus += Prestige.bonuses.scienceBonus || 0;
+            if (scienceBonus > 0) {
+                this.production.science *= (1 + scienceBonus);
+            }
         }
         
         // Apply Observatory science multiplier (+100% = 2x)

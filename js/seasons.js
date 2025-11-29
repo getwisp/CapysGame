@@ -310,6 +310,36 @@ const Seasons = {
             }
         }
     },
+    
+    // Forecast next weather (used by Birds visitor)
+    forecastNextWeather() {
+        const seasonWeather = this.weatherTypes[this.currentSeason];
+        // Find most likely weather for current season
+        let mostLikely = 'sunny';
+        let highestProb = 0;
+        
+        for (const [weather, probability] of Object.entries(seasonWeather)) {
+            if (probability > highestProb) {
+                highestProb = probability;
+                mostLikely = weather;
+            }
+        }
+        
+        // Return weather info for forecast
+        const weatherInfo = {
+            sunny: { name: 'Sunny', icon: '☀️' },
+            rain: { name: 'Rainy', icon: '🌧️' },
+            heatWave: { name: 'Heat Wave', icon: '🔥' },
+            coldSnap: { name: 'Cold Snap', icon: '❄️' }
+        };
+        
+        return weatherInfo[mostLikely] || weatherInfo.sunny;
+    },
+    
+    // Get time until next weather change (in ticks)
+    getTimeUntilWeatherChange() {
+        return this.weatherDuration - this.weatherTimer;
+    },
 
     // Advance to next season
     nextSeason() {
@@ -376,13 +406,17 @@ const Seasons = {
 
     // Check for random events
     checkRandomEvents() {
-        // Natural hot spring discovery (with research bonus)
+        // Natural hot spring discovery (with research + prestige bonus)
         if (!Buildings.types.naturalSpring.unlocked && 
             this.tickCount > 1000) {
             let discoveryChance = 0.0005;
             // Apply Spring Discovery research bonus
             if (Research.bonuses.springDiscovery) {
                 discoveryChance *= Research.bonuses.springDiscovery;
+            }
+            // Apply Hot Spring Sense prestige bonus
+            if (Prestige.bonuses.springDiscovery) {
+                discoveryChance *= Prestige.bonuses.springDiscovery;
             }
             if (Math.random() < discoveryChance) {
                 Buildings.discoverNaturalSpring();

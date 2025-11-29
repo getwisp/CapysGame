@@ -239,6 +239,24 @@ const UI = {
             this.lastValues.weather = weatherInfo.weather;
         }
         
+        // Weather forecast from birds (only show when birds are visiting)
+        const forecast = Visitors.getWeatherForecast();
+        const hasForecast = forecast !== null;
+        if (this.lastValues.hasForecast !== hasForecast || (hasForecast && this.lastValues.forecastWeather !== forecast.name)) {
+            const forecastEl = document.getElementById('weather-forecast');
+            if (forecastEl) {
+                if (hasForecast) {
+                    forecastEl.classList.remove('hidden');
+                    forecastEl.innerHTML = `<span class="forecast-label">🐦 Next:</span> ${forecast.icon}`;
+                    forecastEl.title = `Birds predict: ${forecast.name}`;
+                } else {
+                    forecastEl.classList.add('hidden');
+                }
+            }
+            this.lastValues.hasForecast = hasForecast;
+            this.lastValues.forecastWeather = hasForecast ? forecast.name : null;
+        }
+        
         // Time of day (only update if changed)
         const timeInfo = Seasons.getTimeInfo();
         if (this.lastValues.isNight !== timeInfo.isNight) {

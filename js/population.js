@@ -266,13 +266,21 @@ const Population = {
             this.happinessPenalties.cold = coldPenalty;
         }
         
-        // Visitor bonuses - cleanup old value first
+        // Visitor bonuses - cleanup old values first
         delete this.happinessBonuses.visitors;
+        delete this.happinessBonuses.butterflies;
         
         const visitorBonus = Visitors.getHappinessBonus();
         if (visitorBonus > 0) {
             happiness += visitorBonus;
             this.happinessBonuses.visitors = visitorBonus;
+        }
+        
+        // Extra happiness from visitors with 'happiness' bonus type (Butterflies)
+        const extraHappiness = Visitors.getExtraHappinessBonus();
+        if (extraHappiness > 0) {
+            happiness += extraHappiness;
+            this.happinessBonuses.butterflies = extraHappiness;
         }
         
         // Healer bonus - cleanup old value first
@@ -313,6 +321,7 @@ const Population = {
             warmth: 'Warm & Cozy',
             cold: 'Too Cold',
             visitors: 'Animal Friends',
+            butterflies: 'Butterfly Joy',
             healers: 'Healer Care'
         };
         

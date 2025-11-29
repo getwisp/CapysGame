@@ -236,6 +236,28 @@ const Visitors = {
         }
         return 1;
     },
+    
+    // Check if birds are visiting (for weather forecast)
+    hasBirdsVisiting() {
+        return this.currentVisitors.some(v => v.id === 'birds');
+    },
+    
+    // Get weather forecast (only works if birds are visiting)
+    getWeatherForecast() {
+        if (!this.hasBirdsVisiting()) return null;
+        return Seasons.forecastNextWeather();
+    },
+    
+    // Get extra happiness from bonus type 'happiness' (e.g., Butterflies)
+    getExtraHappinessBonus() {
+        let bonus = 0;
+        for (const visitor of this.currentVisitors) {
+            if (visitor.bonus.type === 'happiness') {
+                bonus += visitor.bonus.amount * Research.bonuses.visitorBonus;
+            }
+        }
+        return bonus;
+    },
 
     // Process tick
     tick() {
