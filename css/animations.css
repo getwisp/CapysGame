@@ -1,0 +1,764 @@
+/* Capys Game - Animations */
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes slideIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(-10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+@keyframes slideInRight {
+    from { 
+        opacity: 0; 
+        transform: translateX(20px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateX(0); 
+    }
+}
+
+@keyframes floatUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
+}
+
+@keyframes shimmer {
+    0% { 
+        transform: translateX(-100%); 
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% { 
+        transform: translateX(100%); 
+        opacity: 0;
+    }
+}
+
+@keyframes steamRise {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.4;
+    }
+    100% {
+        transform: translateY(-30px) scale(1.5);
+        opacity: 0;
+    }
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@keyframes grassSway {
+    0%, 100% { transform: rotate(-2deg); }
+    50% { transform: rotate(2deg); }
+}
+
+@keyframes cloudDrift {
+    0% { transform: translateX(-30%); }
+    100% { transform: translateX(30%); }
+}
+
+@keyframes lilyFloat {
+    0%, 100% { 
+        transform: translateY(0) rotate(-2deg); 
+    }
+    50% { 
+        transform: translateY(-3px) rotate(2deg); 
+    }
+}
+
+@keyframes waterRipple {
+    0% {
+        transform: scale(0.5);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@keyframes capyWalk {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(2px) translateY(-2px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(2px) translateY(-2px); }
+}
+
+@keyframes capyIdle {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+@keyframes capySoak {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(2px); }
+}
+
+@keyframes blink {
+    0%, 45%, 55%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@keyframes sparkle {
+    0%, 100% { 
+        opacity: 0; 
+        transform: scale(0.5) rotate(0deg); 
+    }
+    50% { 
+        opacity: 1; 
+        transform: scale(1) rotate(180deg); 
+    }
+}
+
+@keyframes buildComplete {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Capybara Sprites */
+.capybara {
+    position: absolute;
+    width: 40px;
+    height: 30px;
+    font-size: 28px;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    z-index: 10;
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.3));
+}
+
+.capybara::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-image: url('../assets/sprites/capybara.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.capybara::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 8px;
+    background: radial-gradient(ellipse, rgba(0,0,0,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.capybara.idle {
+    animation: capyIdle 2s ease-in-out infinite;
+}
+
+.capybara.walking {
+    animation: capyWalk 0.5s ease-in-out infinite;
+}
+
+.capybara.soaking {
+    animation: capySoak 3s ease-in-out infinite;
+}
+
+.capybara.soaking::before {
+    content: '';
+    background-image: url('../assets/sprites/capybara-soaking.svg');
+}
+
+.capybara:hover {
+    transform: scale(1.2);
+}
+
+/* Yuzu on head - famous capybara onsen videos reference! */
+.capybara.has-yuzu {
+    cursor: pointer;
+}
+
+.yuzu-on-head {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    animation: yuzuBalance 3s ease-in-out infinite;
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+    z-index: 10;
+    pointer-events: none;
+}
+
+@keyframes yuzuBalance {
+    0%, 100% { 
+        transform: translateX(-50%) rotate(-2deg); 
+    }
+    50% { 
+        transform: translateX(-50%) rotate(2deg); 
+    }
+}
+
+.yuzu-on-head.wobble {
+    animation: yuzuWobble 0.2s ease-in-out;
+}
+
+@keyframes yuzuWobble {
+    0%, 100% { 
+        transform: translateX(-50%) rotate(0deg) scale(1); 
+    }
+    25% { 
+        transform: translateX(-50%) rotate(-10deg) scale(1.1); 
+    }
+    75% { 
+        transform: translateX(-50%) rotate(10deg) scale(1.1); 
+    }
+}
+
+.yuzu-on-head.falling {
+    animation: yuzuFall 0.5s ease-in forwards !important;
+}
+
+@keyframes yuzuFall {
+    0% {
+        transform: translateX(-50%) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-50%) translateY(40px) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+/* Pup styling */
+.capybara.pup {
+    width: 24px;
+    height: 18px;
+    font-size: 18px;
+}
+
+.capybara.pup::before {
+    content: '🐿️';
+}
+
+/* Hot Spring Visuals */
+.hot-spring {
+    position: relative;
+    width: 80px;
+    height: 60px;
+    background: radial-gradient(ellipse at center, 
+        rgba(91, 143, 168, 0.9) 0%,
+        rgba(74, 122, 143, 0.8) 50%,
+        rgba(58, 98, 118, 0.6) 100%
+    );
+    border-radius: 50%;
+    border: 3px solid var(--color-spring);
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.3),
+        inset 0 -4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hot-spring.natural {
+    width: 70px;
+    height: 50px;
+}
+
+.hot-spring.expanded {
+    width: 100px;
+    height: 70px;
+}
+
+.hot-spring.bathhouse {
+    width: 120px;
+    height: 80px;
+    border-radius: 10px;
+}
+
+.hot-spring.grand {
+    width: 160px;
+    height: 100px;
+    border-radius: 20px;
+    border-width: 5px;
+}
+
+/* Steam effect */
+.steam-container {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 60px;
+    overflow: visible;
+    pointer-events: none;
+}
+
+.steam {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: radial-gradient(circle, 
+        rgba(255, 255, 255, 0.7) 0%, 
+        rgba(255, 255, 255, 0.3) 40%,
+        rgba(255, 255, 255, 0) 70%
+    );
+    border-radius: 50%;
+    animation: steamRise 2.5s ease-out infinite;
+    filter: blur(2px);
+}
+
+.steam:nth-child(1) { left: 5%; animation-delay: 0s; width: 22px; height: 22px; }
+.steam:nth-child(2) { left: 35%; animation-delay: 0.6s; width: 28px; height: 28px; }
+.steam:nth-child(3) { left: 65%; animation-delay: 1.2s; width: 20px; height: 20px; }
+
+/* Additional steam particles */
+.hot-spring::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15px;
+    height: 15px;
+    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: steamRise 3s ease-out infinite;
+    animation-delay: 0.3s;
+    filter: blur(3px);
+}
+
+/* Ripple effect in water */
+.water-ripple {
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    animation: ripple 2s ease-out infinite;
+}
+
+/* Building Visuals */
+.building-visual {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform var(--transition-fast);
+}
+
+.building-visual:hover {
+    transform: translateY(-4px);
+}
+
+.building-visual .building-sprite {
+    font-size: 32px;
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.3));
+}
+
+.building-visual .building-label {
+    font-size: var(--font-size-xs);
+    color: var(--color-text);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    margin-top: 2px;
+}
+
+.building-visual.new {
+    animation: buildComplete 0.5s ease;
+}
+
+/* Visitor Animals */
+.visitor-animal {
+    position: absolute;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+.visitor-animal:hover {
+    transform: scale(1.3);
+}
+
+.visitor-animal.leaving {
+    animation: fadeOut 1s ease forwards;
+}
+
+/* Seasonal Effects */
+.season-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-slow);
+}
+
+/* Spring - Cherry blossoms */
+.season-spring .season-effect::before {
+    content: '🌸';
+    position: absolute;
+    font-size: 16px;
+    animation: cloudDrift 20s linear infinite;
+}
+
+/* Summer - Sun rays */
+.season-summer .bg-layer.sky {
+    background: linear-gradient(180deg, #4a90c4 0%, #7cb9e8 50%, #a8d8ea 100%);
+}
+
+/* Autumn - Falling leaves */
+.season-autumn .season-effect::before {
+    content: '🍂';
+    position: absolute;
+    font-size: 16px;
+    animation: cloudDrift 15s linear infinite;
+}
+
+/* Winter - Snowfall */
+.season-winter .bg-layer.sky {
+    background: linear-gradient(180deg, #b8c9d4 0%, #d4e4ed 50%, #e8f1f5 100%);
+}
+
+.season-winter .season-effect::before {
+    content: '❄️';
+    position: absolute;
+    font-size: 12px;
+    animation: cloudDrift 25s linear infinite;
+}
+
+/* Weather Effects */
+.weather-rain .bg-layer.sky {
+    background: linear-gradient(180deg, #5a6a7a 0%, #7a8a9a 50%, #9aaaBA 100%);
+}
+
+.weather-rain::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        transparent 0px,
+        transparent 10px,
+        rgba(155, 175, 195, 0.1) 10px,
+        rgba(155, 175, 195, 0.1) 11px
+    );
+    animation: rainfall 0.3s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes rainfall {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(11px); }
+}
+
+/* Day/Night Transition - smooth changes */
+.bg-layer.sky {
+    transition: background 3s ease-in-out, filter 3s ease-in-out;
+}
+
+#settlement-view {
+    transition: filter 3s ease-in-out;
+}
+
+.bg-layer.clouds {
+    transition: opacity 3s ease-in-out, filter 3s ease-in-out;
+}
+
+/* Night Mode */
+.time-night .bg-layer.sky {
+    background: linear-gradient(180deg, #0d1b2a 0%, #1b263b 40%, #2a3f5f 100%);
+}
+
+.time-night .bg-layer.clouds {
+    opacity: 0.3;
+    filter: brightness(0.4);
+}
+
+.time-night #settlement-view {
+    filter: brightness(0.65) saturate(0.8);
+}
+
+/* Moon and stars */
+.time-night #settlement-view::before {
+    content: '✨';
+    position: absolute;
+    top: 8%;
+    left: 10%;
+    font-size: 10px;
+    animation: twinkle 2s ease-in-out infinite;
+    z-index: 5;
+}
+
+.time-night #settlement-view::after {
+    content: '🌙';
+    position: absolute;
+    top: 5%;
+    right: 12%;
+    font-size: 36px;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 200, 0.5));
+    animation: moonGlow 4s ease-in-out infinite;
+    z-index: 5;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes moonGlow {
+    0%, 100% { filter: drop-shadow(0 0 15px rgba(255, 255, 200, 0.5)); }
+    50% { filter: drop-shadow(0 0 25px rgba(255, 255, 200, 0.7)); }
+}
+
+/* Day time - bright and sunny */
+.time-day .bg-layer.sky {
+    background: linear-gradient(180deg, #5b9bd5 0%, #87CEEB 50%, #a8d8ea 100%);
+}
+
+.time-day .bg-layer.clouds {
+    opacity: 0.9;
+}
+
+/* Dusk transition colors - golden hour */
+.time-dusk .bg-layer.sky {
+    background: linear-gradient(180deg, #4a3f6b 0%, #c47d5a 40%, #e8a87c 100%);
+}
+
+.time-dusk .bg-layer.clouds {
+    opacity: 0.6;
+    filter: brightness(0.9) saturate(1.2);
+}
+
+.time-dusk #settlement-view {
+    filter: brightness(0.85) saturate(1.1) sepia(0.1);
+}
+
+/* Dawn transition colors - soft morning light */
+.time-dawn .bg-layer.sky {
+    background: linear-gradient(180deg, #6b7a9a 0%, #e8a87c 50%, #ffd4a3 100%);
+}
+
+.time-dawn .bg-layer.clouds {
+    opacity: 0.7;
+    filter: brightness(0.95);
+}
+
+.time-dawn #settlement-view {
+    filter: brightness(0.9) saturate(0.95);
+}
+
+/* Dawn/Dusk sun indicator */
+.time-dawn #settlement-view::after,
+.time-dusk #settlement-view::after {
+    content: '☀️';
+    position: absolute;
+    font-size: 28px;
+    filter: drop-shadow(0 0 20px rgba(255, 200, 100, 0.6));
+    z-index: 5;
+}
+
+.time-dawn #settlement-view::after {
+    top: 15%;
+    left: 15%;
+}
+
+.time-dusk #settlement-view::after {
+    top: 12%;
+    right: 10%;
+}
+
+/* Button Click Effects */
+.action-btn:active,
+.btn:active {
+    transform: scale(0.95);
+}
+
+.action-btn.clicked {
+    animation: pulse 0.2s ease;
+}
+
+/* Resource Change Flash */
+.resource.changed {
+    animation: pulse 0.3s ease;
+}
+
+.resource.increased .res-amount {
+    color: var(--color-success);
+}
+
+.resource.decreased .res-amount {
+    color: var(--color-danger);
+}
+
+/* Tab Transition */
+.tab-panel {
+    animation: fadeIn 0.2s ease;
+}
+
+/* Building Construction Progress */
+.building-item.building {
+    position: relative;
+    overflow: hidden;
+}
+
+.building-item.building::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: var(--color-accent);
+    animation: buildProgress 1s linear forwards;
+}
+
+@keyframes buildProgress {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+/* Notification Toast */
+.toast {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    padding: var(--space-md) var(--space-lg);
+    background: var(--color-bg-medium);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-medium);
+    animation: slideInRight 0.3s ease, fadeOut 0.3s ease 2.7s forwards;
+    z-index: var(--z-toast);
+}
+
+.toast.success {
+    border-color: var(--color-success);
+}
+
+.toast.warning {
+    border-color: var(--color-warning);
+}
+
+.toast.error {
+    border-color: var(--color-danger);
+}
+
+/* Hover tooltips */
+[data-tooltip] {
+    position: relative;
+}
+
+[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--color-bg-dark);
+    border: 1px solid var(--color-bg-lighter);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-fast);
+}
+
+[data-tooltip]:hover::after {
+    opacity: 1;
+}
+
+/* Loading State */
+.loading {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 3px solid var(--color-bg-lighter);
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Disabled animations option */
+.no-animations * {
+    animation: none !important;
+    transition: none !important;
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+

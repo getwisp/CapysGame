@@ -1,0 +1,114 @@
+/* Capys Game - Theme Variables */
+:root {
+    /* Color Palette - Warm Earth Tones */
+    --color-bg-dark: #2d2a24;
+    --color-bg-medium: #3d3830;
+    --color-bg-light: #4d463b;
+    --color-bg-lighter: #5d544a;
+    
+    /* Primary Colors */
+    --color-primary: #c4956a;        /* Warm terracotta */
+    --color-primary-dark: #a67b52;
+    --color-primary-light: #d4a87a;
+    
+    /* Accent Colors */
+    --color-accent: #7fa878;         /* Sage green */
+    --color-accent-dark: #5f8858;
+    --color-accent-light: #9fc898;
+    
+    /* Water Colors */
+    --color-water: #5b8fa8;          /* River blue */
+    --color-water-dark: #4a7a8f;
+    --color-water-light: #7bb0c8;
+    
+    /* Hot Spring Colors */
+    --color-spring: #d4a574;         /* Warm amber */
+    --color-spring-steam: rgba(255, 255, 255, 0.6);
+    --color-warmth: #e8a854;
+    --color-warmth-low: #7a9bb8;
+    
+    /* UI Colors */
+    --color-text: #f5f0e6;
+    --color-text-dim: #b5b0a6;
+    --color-text-dark: #3d3830;
+    
+    --color-success: #7fa878;
+    --color-warning: #d4a574;
+    --color-danger: #c47a6a;
+    --color-info: #7ab0c8;
+    
+    /* Resource Colors */
+    --color-grass: #8cb369;
+    --color-reeds: #c9a959;
+    --color-clay: #b87a56;
+    --color-wood: #8b6b4a;
+    --color-fish: #6b9fb8;
+    --color-stone: #8a8a8a;
+    
+    /* Season Colors */
+    --color-spring-season: #c4d69a;
+    --color-summer-season: #e8c864;
+    --color-autumn-season: #d4886a;
+    --color-winter-season: #a8c8d8;
+    
+    /* Shadows */
+    --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.3);
+    --shadow-hard: 0 6px 24px rgba(0, 0, 0, 0.4);
+    --shadow-inset: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 20px;
+    --radius-round: 50%;
+    
+    /* Spacing */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    
+    /* Typography */
+    --font-main: 'Nunito', sans-serif;
+    --font-display: 'Fredoka One', cursive;
+    
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.5rem;
+    --font-size-xxl: 2rem;
+    
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* Z-Index Layers */
+    --z-bg: 1;
+    --z-content: 10;
+    --z-ui: 100;
+    --z-modal: 1000;
+    --z-toast: 2000;
+}
+
+/* Season Theme Variations */
+.season-spring {
+    --season-tint: var(--color-spring-season);
+}
+
+.season-summer {
+    --season-tint: var(--color-summer-season);
+}
+
+.season-autumn {
+    --season-tint: var(--color-autumn-season);
+}
+
+.season-winter {
+    --season-tint: var(--color-winter-season);
+}
+
