@@ -108,9 +108,14 @@ const Resources = {
         return this.amounts[resourceId] || 0;
     },
 
-    // Get max storage for a resource
+    // Get max storage for a resource (with visitor and research bonuses)
     getMax(resourceId) {
-        return this.maxStorage[resourceId] || 0;
+        const baseMax = this.maxStorage[resourceId] || 0;
+        // Apply storage multipliers from visitors (e.g., Hippos) and research
+        const visitorMultiplier = Visitors.getStorageMultiplier();
+        const researchMultiplier = 1 + (Research.bonuses.storageMultiplier || 0);
+        const totalMultiplier = visitorMultiplier * researchMultiplier;
+        return Math.floor(baseMax * totalMultiplier);
     },
 
     // Check if we can afford a cost

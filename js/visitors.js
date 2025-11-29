@@ -92,6 +92,26 @@ const Visitors = {
             rarity: 3,
             stayDuration: 3000,
             description: '+30% night productivity'
+        },
+        hippos: {
+            name: 'Hippos',
+            icon: '🦛',
+            bonus: { type: 'storageBonus', amount: 0.25 },
+            happinessBonus: 4,
+            attractedBy: ['fishingPond', 'expandedPool', 'bathhouse', 'grandOnsen'],
+            rarity: 3,
+            stayDuration: 4500,
+            description: '+25% storage capacity'
+        },
+        cats: {
+            name: 'Cats',
+            icon: '🐱',
+            bonus: { type: 'allProduction', amount: 0.12 },
+            happinessBonus: 6,
+            attractedBy: ['wovenLodge', 'woodenLonghouse', 'stoneManor', 'bathhouse'],
+            rarity: 2,
+            stayDuration: 3500,
+            description: '+12% all production'
         }
     },
 
@@ -257,6 +277,17 @@ const Visitors = {
             }
         }
         return bonus;
+    },
+    
+    // Get storage capacity multiplier (e.g., Hippos)
+    getStorageMultiplier() {
+        let multiplier = 1;
+        for (const visitor of this.currentVisitors) {
+            if (visitor.bonus.type === 'storageBonus') {
+                multiplier += visitor.bonus.amount * Research.bonuses.visitorBonus;
+            }
+        }
+        return multiplier;
     },
 
     // Process tick

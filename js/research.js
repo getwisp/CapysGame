@@ -254,6 +254,30 @@ const Research = {
             },
             requires: ['writing'],
             researched: false
+        },
+        
+        // Storage Research
+        resourceStorage: {
+            name: 'Resource Storage',
+            branch: 'construction',
+            description: '+25% storage capacity for all resources',
+            cost: { science: 300 },
+            effects: {
+                storageMultiplier: 0.25
+            },
+            requires: ['foodStorage', 'clayWorking'],
+            researched: false
+        },
+        grandStorage: {
+            name: 'Grand Storage',
+            branch: 'construction',
+            description: '+50% storage capacity for all resources',
+            cost: { science: 800 },
+            effects: {
+                storageMultiplier: 0.5
+            },
+            requires: ['resourceStorage', 'stonecraft'],
+            researched: false
         }
     },
 
@@ -261,6 +285,7 @@ const Research = {
     bonuses: {
         productionBonus: {},
         storage: {},
+        storageMultiplier: 0,
         springCapacity: 0,
         warmthBonus: 0,
         springHappiness: 0,
@@ -286,6 +311,7 @@ const Research = {
         this.bonuses = {
             productionBonus: {},
             storage: {},
+            storageMultiplier: 0,
             springCapacity: 0,
             warmthBonus: 0,
             springHappiness: 0,
@@ -398,6 +424,10 @@ const Research = {
         
         if (effects.springDiscovery) {
             this.bonuses.springDiscovery *= effects.springDiscovery;
+        }
+        
+        if (effects.storageMultiplier) {
+            this.bonuses.storageMultiplier += effects.storageMultiplier;
         }
         
         // Recalculate rates

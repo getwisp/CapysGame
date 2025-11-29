@@ -239,13 +239,13 @@ const Buildings = {
         library: {
             name: 'Library',
             icon: '📚',
-            description: '+150 Science storage',
+            description: '+200 Science storage',
             category: 'storage',
             tier: 3,
-            cost: { wood: 80, pottery: 20 },
-            costMultiplier: 1.5,
+            cost: { wood: 60, pottery: 15 },
+            costMultiplier: 1.4,
             effects: {
-                storage: { science: 150 }
+                storage: { science: 200 }
             },
             requires: { councilCircle: 1 },
             unlocked: false,

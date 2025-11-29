@@ -662,6 +662,23 @@ body {
     z-index: var(--z-content);
 }
 
+.visitor-animal {
+    position: absolute;
+    font-size: 2em;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.visitor-animal:hover {
+    transform: scale(1.1);
+}
+
+.visitor-animal.visitor-large {
+    font-size: 3em;
+    z-index: calc(var(--z-content) + 1);
+}
+
 /* Message Log */
 #message-log {
     height: 80px;

@@ -1025,7 +1025,8 @@ const UI = {
         
         container.innerHTML = visitors.map(v => {
             const pos = this.visitorPositions[v.id];
-            return `<div class="visitor-animal" style="left: ${pos.left}%; top: ${pos.top}%" data-visitor="${v.id}">${v.icon}</div>`;
+            const sizeClass = v.id === 'hippos' ? 'visitor-large' : '';
+            return `<div class="visitor-animal ${sizeClass}" style="left: ${pos.left}%; top: ${pos.top}%" data-visitor="${v.id}">${v.icon}</div>`;
         }).join('');
     },
 
